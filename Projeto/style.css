@@ -1,0 +1,176 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+    color: var(--text-color);
+}
+/*Elemento root, onde é a raiz de todo o site*/
+:root{
+    --text-color: white;
+    --bg-url: url(./assets/bg-mobile.jpg);
+    --stroke-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.1);
+    --surface-color-hover: rgba(0, 0, 0, 0.02);
+    --highlight-color: rgba(255, 255, 255, 0.2);
+    --switch-bg-url: url(./assets/moon-stars.svg);
+}
+
+/*Elemento light, onde é a parte "dia" do nosso site*/
+.light{
+    --text-color: black;
+    --bg-url: url(./assets/bg-mobile-light.jpg);
+    --stroke-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.05);
+    --surface-color-hover: rgba(0, 0, 0, 0.02);
+    --highlight-color: rgba(0, 0, 0, 0.1);
+    --switch-bg-url: url(./assets/sun.svg);
+ }
+
+body{
+    /*
+    background-color: grey;
+    background-image: url(assets/bg-desktop.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    */
+
+    /*Basicamente, esta é a forma como escrevemos de forma comum, porém podemos usar de um shorthand, exemplo:
+    A altura normalmente segue o conteúdo da página, precisa ser fluída*/
+
+    background: var(--bg-url) no-repeat top center/cover;
+
+    /*OBS: Quando preciso estipular o size, utilizo de uma / para prosseguir*/
+}
+
+#container{
+    width: 360px;
+    margin: 56px auto 0px;
+    padding: 0 24px;
+    /*O margin no CSS funciona somente para a largura, por isso que em cima não tem diferença quando posicionamos o margin: auto;
+    DISPLAYS
+    inline - Fica somente ajustada ao conteúdo
+    block - Fica ajustada a largura total, forçando elementos a se separarem
+    */
+}
+
+#profile{
+    text-align: center;
+    color: var(--text-color);
+    /*Neste caso, utilizamos dos elementos (sem ser itens) para realizar o alinhamento das tags que contém dentro, ou seja, não posicionamos a imagem através de img, mas sim do #profile no geral  */
+    font-weight: 500;
+    line-height: 24px;
+    /*Em relação a padding e margin, posso utilizar do shorthand em sentido horário das posições*/
+    padding-top: 8px;
+    margin: 56px auto 30px;
+}
+
+#profile img{
+    width: 112px;
+    height: 112px;
+}
+
+#switch{
+    position: relative;
+    width: 64px;
+    margin: 4px auto;
+}
+
+#switch button {
+    width: 32px;
+    height: 32px;
+    background: white var(--switch-bg-url) no-repeat center;
+    border: 0;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+    transform: translateY(-50%)
+}
+
+.light #switch button{
+    right: 0;
+    left: initial;
+}
+
+#switch span{
+    display: block;
+    width: 64px;
+    height: 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    /*Aqui utilizamos o weebkit pra funcionar em mais de um navegador*/
+    border-radius: 9999px;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    padding: 24px 0 ;
+}
+
+ul li a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 16px 24px;
+
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    border-radius: 8px;
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    text-decoration: none;
+    font-weight: 500;
+
+    transition: background 0.2s;
+    /*Posso usar elementos de textos também para realizar a alteração de posicionamento*/
+}
+
+ul li a:hover{
+    border: 1.5px solid var(--text-color);
+    background: var(--surface-color-hover);
+}
+
+#social-links{
+    display: flex;
+    padding: 24px 0;
+    font-size: 24px;
+    /*Em caso de alteração de tamanho de ícones, eu utilizo o font-size mesmo*/
+    justify-content: center;
+}
+
+/*Utilizei dos elementos abaixo para poder centralizar melhor os itens*/
+#social-links a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    transition: background 0.2s;
+    border-radius: 50%;
+}
+
+#social-links a:hover{
+    background: var(--highlight-color);
+}
+
+footer{
+    padding: 24px 0px;
+    text-align: center;
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+footer a {
+    color: var(--text-color);
+}
